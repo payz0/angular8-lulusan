@@ -1,0 +1,96 @@
+<div class="konten">
+    <div style="text-align: center;">
+        <h2 class="judul">Info Kelulusan Kelas IX</h2>
+        <h1 class="judul">SMP Negeri 1 Arut Selatan</h1>
+        <h4 class="judul">Tahun Ajaran 2021/2022</h4>
+    </div>
+    <div class="container-fluid">
+        <div class="row"  *ngIf="!suksesLog">
+            <div class="col-md-3"></div>
+            <div class="form-login col-md-6">
+                <div >
+                    <label for="">NISN</label> 
+                    <input type="text" class="form-control" [(ngModel)]="siswa.nisn">
+                    <label for="">NIS</label>
+                    <input type="text" class="form-control" [(ngModel)]="siswa.nis">
+                    <label for="">Kelas</label>
+                    <select  class="form-control" [(ngModel)]="siswa.kelas">
+                        <option value="{{x}}" *ngFor="let x of kelas">{{x}}</option>
+                    </select>
+                    <hr>
+                    <button class="btn btn-primary" (click)="login()">Login</button>
+                </div>
+                
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row"  *ngIf="suksesLog" style="    background: rgb(43 53 53);position: absolute;top: 0;height: 100vh;padding: 20px;width: 100vw;">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div   style="background: white;padding: 20px;">
+                    <p style="color: black;">Melalui media website ini, menyatakan status kelulusan secara resmi, bahwa siswa SMP Negeri 1 Arut Selatan berikut :</p>
+                    <table class="table">
+                        <tr>
+                            <td>Nama</td>
+                            <td>:</td>
+                            <td>{{siswa.nama}}</td>
+                        </tr>
+                        <tr>
+                            <td>NISN</td>
+                            <td>:</td>
+                            <td>{{siswa.nisn}}</td>
+                        </tr>
+                        <tr>
+                            <td>TTL</td>
+                            <td>:</td>
+                            <td>{{siswa.ttl}}</td>
+                        </tr>
+                        <tr>
+                            <td>Kelas</td>
+                            <td>:</td>
+                            <td>{{siswa.kelas}}</td>
+                        </tr>
+                    </table>
+                    <i>Dinyatakan : 
+                        <button *ngIf="!status" class="btn btn-danger btn-sm" (click)="status = true">Klik disini</button>
+                        <h1 *ngIf="status" style="text-align: center;">{{siswa.status | uppercase}}</h1>
+                    </i>
+                    <hr> 
+                    <div style="    position: relative;
+                    right: -45%;
+                    width: 55%;
+                    font-size: 1.4vw;
+                    padding-bottom: 20px;">
+                        <span>{{sekolah.tempat}} , {{sekolah.tanggal}}</span><br>
+                        <b>Kepala Sekolah</b>
+                        <div style="position: absolute;
+                        left: -55px;
+                        top: -6px;
+                        width: 100%;">
+                            <img src="./assets/ttd2.png" style="width: 65%;filter: saturate(8);">
+                        </div>
+                        <br>
+                        <br>
+                        <!-- 197301281997032004 -->
+                        <b>{{sekolah.kepsek}}</b><br>
+                        <span>NIP. {{sekolah.nip}}</span>
+                    </div>
+                </div>
+            </div>            
+            
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+<!-- <div class="card-lulus">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1>Selamat anda lulus</h1>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    
+</div> -->

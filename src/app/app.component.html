@@ -1,0 +1,45 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="./assets/smp.png" routerLink="/" style="cursor: pointer;"
+  />
+  <span>SMP Negeri 1 Arut Selatan</span>
+    <div class="spacer"></div>
+    
+      <div style="margin-right:20px" *ngIf="login">
+        <a class="btn btn-secondary btn-sm" style="margin-right: 3px; color:white" routerLink="/daftar">Daftar</a>
+        <a class="btn btn-secondary btn-sm" style="margin-right: 3px; color:white" routerLink="/import">Import</a>
+        <a class="btn btn-secondary btn-sm" style="margin-right: 3px; color:white" routerLink="/admin">Profil</a>
+        <button class="btn btn-primary btn-sm" (click)="logout()">Logout</button>
+    </div>
+    <div style="margin-right:20px" *ngIf="!login">
+      <i class="material-icons" style="cursor: pointer;" (click)="logAdmin = true">account_circle</i>
+    </div>
+
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<div style="background: rgb(29 48 56);height: 100vh;" *ngIf="logAdmin">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="background: white;margin-top: 120px;padding:20px" >
+      <label for="">Login admin</label>
+      <input type="text" class="form-control" placeholder="username" [(ngModel)]="admin.username" >
+      <br>
+      <input type="password" class="form-control" placeholder="password" [(ngModel)]="admin.password" >
+      <br>
+      <div class="float-right">
+        <button class="btn btn-primary btn-sm" style="margin-right: 4px;" (click)="loginAdmin()">Login</button>
+        <button class="btn btn-danger btn-sm" (click)="logAdmin = false" >Batal</button>
+        
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  
+</div>

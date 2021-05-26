@@ -1,0 +1,19 @@
+<div style="margin-top: 100px;" class="row">
+    <div class="col-md-6">
+        <b><u>Admin</u></b>
+        <!-- <label for="">Username</label> -->
+        <input type="text" class="form-control" placeholder="username" [(ngModel)]="admin.username">
+        <!-- <label for="">Password</label> -->
+        <input type="text" class="form-control" placeholder="password" [(ngModel)]="admin.password">
+        <hr>
+        <button class="btn btn-primary btn-sm" (click)="update(admin)">Update</button>
+    </div>
+    <div class="col-md-6">
+        <b><u>Detail profile</u></b>
+        <input type="text" class="form-control" placeholder="Kota" [(ngModel)]="sekolah.tempat">
+        <input type="text" class="form-control" placeholder="Tanggal" [(ngModel)]="sekolah.tanggal">
+        <input type="text" class="form-control" placeholder="Nama Kepala Sekolah" [(ngModel)]="sekolah.kepsek">
+        <input type="text" class="form-control" placeholder="Nip" [(ngModel)]="sekolah.nip">
+        <button class="btn btn-info btn-sm" (click)="update(sekolah)">Simpan</button>
+    </div>
+</div>

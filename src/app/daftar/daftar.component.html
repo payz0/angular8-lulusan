@@ -1,0 +1,82 @@
+<style>
+    .cm{
+        display: flex;
+        justify-content: space-between;
+    }
+    .edit-btn{
+        font-size: 12px;
+        cursor: pointer;
+        color: #3e3e3e;
+    }
+    .save-btn{
+        font-size: 17px;
+        cursor: pointer;
+        color: green;
+    }
+    .importTitle{
+        background: #ececec;
+        text-align: center;
+        margin-bottom: 5px;
+        padding: 7px;
+    }
+</style>
+
+<h4 class="importTitle">Daftar siswa</h4>
+
+<div class="cm">
+    <div style="font-size: 9pt;">
+        Kelas
+        <select (change)="selectKelas($event)">
+            <option value="{{x}}" *ngFor="let x of kelas" >{{x}}</option>
+        </select>
+    </div>
+    <input type="text" [(ngModel)]="cari.nama" placeholder="Cari siswa" style="font-size: 9pt;margin: 2px;" >
+    <!-- <label for="import" class="btn btn-info btn-sm" style="cursor: pointer;">Import</label>
+    <input type="file"  name="excel" id="import" (change)="fileExcel($event)" style="display: none;"> -->
+</div>
+<!-- <div class="float-right" style="font-size: 9pt;margin: 2px;">
+    <input type="text" [(ngModel)]="cari.nama" placeholder="Cari siswa">
+</div> -->
+<table style="width: 100%;font-size: 9pt;" class="table-bordered">
+    <thead class="bg-dark text-white" >
+        <tr style="height: 32px;text-align: center;">
+            <th style="width: 2px;">No</th>
+            <th>Nisn</th>
+            <th>Nis</th>
+            <th style="width: 300px;">Nama</th>
+            <th>TTL</th>
+            <th>Kelas</th>
+            <th>Lulus</th>
+            <th>Act</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of dataSiswa | filterBy:cari; let i = index">
+            <td style="text-align: center;">{{i+1}}</td>
+            <td>
+                <div class="cm">
+                    <span *ngIf="!editns || (editns && indeks != i)">{{x.nisn}}</span>
+                    <input type="text" [(ngModel)]="x.nisn" *ngIf="editns && indeks == i"> 
+                    <i class="material-icons edit-btn" (click)="editNisn('nisn',i)" *ngIf="!editns || (editns && indeks != i)">mode_edit</i>
+                    <i class="material-icons save-btn" *ngIf="editns  && indeks == i" (click)="saveEdit('nisn',i)">done</i>
+                </div>
+            </td>
+            <td >
+                <div class="cm">
+                    <span *ngIf="!editni || (editni && indeks != i)">{{x.nis}}</span>
+                    <input type="text" [(ngModel)]="x.nis" *ngIf="editni && indeks == i"> 
+                    <i class="material-icons edit-btn" (click)="editNisn('nis',i)" *ngIf="!editni || (editni && indeks != i)">mode_edit</i>
+                    <i class="material-icons save-btn" *ngIf="editni  && indeks == i" (click)="saveEdit('nis',i)">done</i>
+                </div>
+            </td>
+            <td>{{x.nama}}</td>
+            <td>{{x.ttl}}</td>
+            <td>{{x.kelas}}</td>
+            <td (click)="updateSiswa(x)" style="text-align: center;cursor: pointer;">{{x.status}}</td>
+            <td style="text-align: center;">
+                <span style="cursor: pointer;" (click)="delSiswa(x._id)">&times;</span>
+            </td>
+        </tr>
+    </tbody>
+    <!-- <button class="btn btn-primary btn-sm" (click)="simpan()" style="margin-top: 5px;">Simpan</button> -->
+</table>
